@@ -1,0 +1,75 @@
+package UPSPTimeEstimator;
+
+import java.util.Scanner;
+
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JFrame;
+
+import java.awt.event.MouseListener;
+import java.util.*;
+
+public class TimeCalculator {
+	private int waitingTime;
+	private int numOfPeople;
+	
+	private ArrayList<Integer> ServArray;
+	
+	Scanner userInput;
+	
+	public static final int POBox = 1;
+	public static final int deliveryInquiry = 2;
+	public static final int trackingInfo = 3;
+	public static final int retail = 4;
+	public static final int mail = 5;
+	
+	
+	public TimeCalculator()
+	{
+		this.waitingTime = 0;
+		this.numOfPeople = 0;
+		ServArray = new ArrayList<Integer>();
+		userInput = new Scanner(System.in);
+	}
+	
+	public void addService()
+	{
+		System.out.print("Please enter the services you want to choose: ");
+		
+		for(int i = 0; i < 5; i++)
+		{
+			int serviceNum = userInput.nextInt();
+			if(serviceNum >= 0 && serviceNum <= 5)
+			{
+				if(serviceNum == 0)
+				{
+					break;
+				}
+				else
+				{
+					ServArray.add(serviceNum);
+				}
+			}
+			else
+			{
+				System.out.print("Service number invalid: ");
+			}
+		}
+		
+		System.out.println(ServArray.toString());
+	}
+	
+	
+	public static void main (String[] args)
+	{
+		boolean serv1 = false;
+		boolean serv2 = false;
+		boolean serv3 = false;
+		boolean serv4 = false;
+		boolean serv5 = false;
+		
+		TimeCalculator a = new TimeCalculator();
+		a.addService();
+	}
+	
+}
